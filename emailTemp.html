@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Gizmo Autofill</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+		@font-face {
+			font-family: 'Myriad Pro';
+			src: url('fonts/MyriadPro-Bold.eot');
+			src: url('fonts/MyriadPro-Bold.eot?#iefix') format('embedded-opentype'),
+			url('fonts/MyriadPro-Bold.woff2') format('woff2'),
+			url('fonts/MyriadPro-Bold.woff') format('woff'),
+			url('fonts/MyriadPro-Bold.ttf') format('truetype'),
+			url('fonts/MyriadPro-Bold.svg#MyriadPro-Bold') format('svg');
+			font-weight: bold;
+			font-style: normal;
+		}
+		@font-face {
+			font-family: 'Gotham';
+			src: url('fonts/Gotham-Black.eot');
+			src: url('fonts/Gotham-Black.eot?#iefix') format('embedded-opentype'),
+			url('fonts/Gotham-Black.woff2') format('woff2'),
+			url('fonts/Gotham-Black.woff') format('woff'),
+			url('fonts/Gotham-Black.ttf') format('truetype'),
+			url('fonts/Gotham-Black.svg#Gotham-Black') format('svg');
+			font-weight: 900;
+			font-style: normal;
+		}
+		body {
+			margin: 0;
+			padding: 0;
+			position: relative;
+			min-height: 100vh;
+			background-color: #e7e4ff;
+		}
+		body *{
+			box-sizing: border-box;
+			font-family: 'Gotham';
+		}
+		h1, h2, h3, h4, h5, h6, p{margin: 0px;}
+		ul{margin: 0; padding: 0;}
+		a{text-decoration: none; display: inline-block;}
+		.mail_temp_section{
+			-ms-flex-align: center;
+			display: flex;
+			width: 100%;
+			height: 100vh;
+		}
+		.mail_temp_card {
+			background-image: url(images/mail_bg.png);
+			display: table;
+			margin: auto;
+			width: 45.6vw;
+			padding: 3vw 6vw;
+			background-size: cover;
+			background-repeat: no-repeat;
+			border-radius: 1.6vw;
+			-webkit-box-shadow: 0px 0px 50px 15px rgba(204,204,236,0.65);
+			-moz-box-shadow: 0px 0px 50px 15px rgba(204,204,236,0.65);
+			box-shadow: 0px 0px 50px 15px rgba(204,204,236,0.65);
+			text-align: center;
+			background-position: bottom center;
+		}
+		.mail_temp_card h2 {
+			color: #775cff;
+			font-size: 2vw;
+			padding-bottom: 2vw;
+		}
+		.input_field {
+			background-color: #e3e3f2;
+			padding: 1.4vw;
+			border-radius: 1.6vw;
+			-webkit-box-shadow: 0px -10px 30px -5px rgba(204,204,236,0.65);
+			-moz-box-shadow: 0px -10px 30px -5px rgba(204,204,236,0.65);
+			box-shadow: 0px -10px 30px -5px rgba(204,204,236,0.65);
+			display: table;
+			margin: auto;
+		}
+		.input_field label {
+			font-size: 1.1vw;
+			display: block;
+			width: 100%;
+			text-align: left;
+			color: #2e3246;
+		}
+		.input_field span {
+			display: block;
+			background-color: #fff;
+			padding: 0.3vw 1vw;
+			color: #2e3246;
+			font-size: 1.2vw;
+			margin-top: 0.5vw;
+			cursor: text;
+		}
+		.mail_temp_card p {
+			font-size: 0.7vw;
+			padding-top: 4.5vw;
+			color: #2e3246;
+			font-family: 'Myriad Pro';
+		}
+		.mail_temp_card p a {
+			color: #836dfa;
+			border-bottom: 2px solid #836dfa;
+		}
+		.mail_temp_card > a.twitter_link {
+			color: #2e3246;
+			font-size: 0.7vw;
+			margin-top: 0.7vw;
+			font-family: 'Myriad Pro';
+		}
+		.mail_temp_card > a.twitter_link > i {
+			color: #6e70fa;
+			font-size: 1.4vw;
+			vertical-align: sub;
+			margin-right: 0.2vw;
+		}
+		@media(max-width: 1199px){
+			.mail_temp_card {
+				padding: 30px 60px;
+				width: 50vw;
+				border-radius: 18px;
+			}
+			.mail_temp_card h2{
+				font-size: 24px;
+				padding-bottom: 24px;
+			}
+			.input_field {
+				padding: 15px;
+				border-radius: 15px;
+			}
+			.input_field label{
+				font-size: 14px;
+			}
+			.input_field span{
+				margin-top: 10px;
+				font-size: 15px;
+				padding: 5px 10px;
+			}
+			.mail_temp_card p {
+				padding-top: 50px;
+				font-size: 12px;
+			}
+			.mail_temp_card p a{
+				border-width: 1px;
+			}
+			.mail_temp_card > a.twitter_link {
+				font-size: 10px;
+				margin-top: 10px;
+			}
+			.mail_temp_card > a.twitter_link > i {
+				font-size: 16px;
+			}
+		}
+		@media(max-width: 991px){
+			.mail_temp_card {
+				width: 65vw;
+			}
+		}
+		@media(max-width: 767px){
+			.mail_temp_card {
+				width: auto;
+				max-width: 90%;
+				padding: 20px 40px;	
+			}
+			.mail_temp_card h2{
+				font-size: 20px;
+				padding-bottom: 20px;
+			}
+			.input_field label {
+				font-size: 12px;
+			}
+			.input_field span {
+				margin-top: 6px;
+				font-size: 13px;
+				padding: 3px 6px;
+			}
+			.mail_temp_card p {
+				padding-top: 40px;
+				font-size: 11px;
+			}
+			.mail_temp_card > a.twitter_link{
+				margin-top: 6px;
+			}
+		}
+		@media(max-width: 479px){
+			.mail_temp_card{
+				padding: 15px;
+			}
+			.mail_temp_card h2{
+				font-size: 16px;
+			}
+			.input_field span{
+				font-size: 12px;
+			}
+			.mail_temp_card p{
+				padding-top: 30px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="mail_temp_section">
+		<div class="mail_temp_card">
+			<h2>Welcome to the team!</h2>
+			<div class="input_field">
+				<label>License</label>
+				<span>747ffbac-8cd7-436c-a8e0-c900e608514e</span>
+			</div>
+			<p>Activate your license in our <a href="#">dashboard</a></p>
+			<a href="#" class="twitter_link"><i class="fa fa-twitter" aria-hidden="true"></i> Feel free to reach out via Twitter</a>
+		</div>
+	</div>
+</body>
+</html>
